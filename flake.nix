@@ -15,7 +15,8 @@
   inputs.nix-index-database.url = "github:Mic92/nix-index-database";
   inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.jeezyvim.url = "github:LGUG2Z/JeezyVim";
+  # inputs.siovim.url = "github:josh-j/siovim";
+  # inputs.siovim.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = inputs:
     with inputs; let
@@ -27,13 +28,13 @@
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [
-            # FIXME:: add any insecure packages you absolutely need here
+            # add any insecure packages you absolutely need here
           ];
         };
 
         overlays = [
           nur.overlays.default
-          jeezyvim.overlays.default
+          # siovim.overlays.default
 
           (_final: prev: {
             unstable = import nixpkgs-unstable {
@@ -82,7 +83,7 @@
 
       nixosConfigurations.nixos = mkNixosConfiguration {
         hostname = "nixos";
-        username = "nixos"; # FIXME: replace with your own username!
+        username = "sio";
         modules = [
           nixos-wsl.nixosModules.wsl
           ./wsl.nix
