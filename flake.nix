@@ -15,8 +15,8 @@
   inputs.nix-index-database.url = "github:Mic92/nix-index-database";
   inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-  # inputs.siovim.url = "github:josh-j/siovim";
-  # inputs.siovim.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.siovim.url = "github:josh-j/siovim";
+  #inputs.siovim.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = inputs:
     with inputs; let
@@ -34,7 +34,7 @@
 
         overlays = [
           nur.overlays.default
-          # siovim.overlays.default
+          siovim.overlays.default
 
           (_final: prev: {
             unstable = import nixpkgs-unstable {

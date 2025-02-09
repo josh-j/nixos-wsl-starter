@@ -34,7 +34,6 @@
 
   stable-packages = with pkgs; [
     # key tools
-    # siovim
     gh # for bootstrapping
     just
 
@@ -45,9 +44,15 @@
     cargo-cache
     cargo-expand
 
+    # cpp
+    ccls
+    gcc
+    lldb
+
     # local dev stuf
     mkcert
     httpie
+
 
     # treesitter
     tree-sitter
@@ -64,6 +69,9 @@
     shellcheck
     shfmt
     statix # nix
+
+    # misc
+    qmk
   ];
 in {
   imports = [
@@ -86,6 +94,7 @@ in {
     ++
     # you can add anything else that doesn't fit into the above two lists in here
     [
+      pkgs.siovim
       # pkgs.some-package
       # pkgs.unstable.some-other-package
     ];
