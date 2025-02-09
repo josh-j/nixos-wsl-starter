@@ -498,11 +498,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1739115622,
-        "narHash": "sha256-9erumn1AgI0uxamRaJc1Ar7M02z4M8q+7JCzKejakq0=",
+        "lastModified": 1739115692,
+        "narHash": "sha256-B+VbcN8yVkRSoBU1E9HyQDbydi01EW30ec3aHHQPcIE=",
         "owner": "josh-j",
         "repo": "siovim",
-        "rev": "f9a667d50ededbba5338994aa4535d309ad1db8e",
+        "rev": "40c055e822cb5909fff01fa5425253474f53b486",
         "type": "github"
       },
       "original": {
