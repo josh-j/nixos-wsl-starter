@@ -1,10 +1,10 @@
 {
-  # uncomment the next line if you want to reference your GitHub/GitLab access tokens and other secrets
-  # secrets,
-  pkgs,
-  username,
-  nix-index-database,
-  ...
+# uncomment the next line if you want to reference your GitHub/GitLab access tokens and other secrets
+# secrets,
+pkgs,
+username,
+nix-index-database,
+...
 }: let
   unstable-packages = with pkgs.unstable; [
     bat
@@ -52,7 +52,6 @@
     # local dev stuf
     mkcert
     httpie
-
 
     # treesitter
     tree-sitter
@@ -175,16 +174,54 @@ in {
       interactiveShellInit = ''
         ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
 
-        ${pkgs.lib.strings.fileContents (pkgs.fetchFromGitHub {
-            owner = "rebelot";
-            repo = "kanagawa.nvim";
-            rev = "de7fb5f5de25ab45ec6039e33c80aeecc891dd92";
-            sha256 = "sha256-f/CUR0vhMJ1sZgztmVTPvmsAgp0kjFov843Mabdzvqo=";
-          }
-          + "/extras/kanagawa.fish")}
+    # Oxocarbon Dark Theme (Inline)
+        ${pkgs.lib.strings.concatStringsSep "\n" [
+          "# Scheme: Oxocarbon Dark"
+          "# Author: shaunsingh/IBM"
 
-        fish_add_path --append /mnt/c/Users/joshj/scoop/apps/win32yank/current
-        set -U fish_greeting
+          "set -l base00 \"161616\""
+          "set -l base01 \"262626\""
+          "set -l base02 \"393939\""
+          "set -l base03 \"525252\""
+          "set -l base04 \"dde1e6\""
+          "set -l base05 \"f2f4f8\""
+          "set -l base06 \"ffffff\""
+          "set -l base07 \"08bdba\""
+          "set -l base08 \"3ddbd9\""
+          "set -l base09 \"78a9ff\""
+          "set -l base0A \"ee5396\""
+          "set -l base0B \"33b1ff\""
+          "set -l base0C \"ff7eb6\""
+          "set -l base0D \"42be65\""
+          "set -l base0E \"be95ff\""
+          "set -l base0F \"82cfff\""
+
+          "set fish_color_normal \$base05"
+          "set fish_color_command \$base0D"
+          "set fish_color_quote \$base0A"
+          "set fish_color_redirection \$base05"
+          "set fish_color_end \$base09"
+          "set fish_color_error \$base08"
+          "set fish_color_param \$base05"
+          "set fish_color_comment \$base03"
+          "set fish_color_match --background=\$base02"
+          "set fish_color_search_match --background=\$base02"
+          "set fish_color_operator \$base0C"
+          "set fish_color_escape \$base0C"
+          "set fish_color_cwd \$base0B"
+          "set fish_color_cwd_root \$base08"
+          "set fish_color_valid_path --underline"
+          "set fish_color_autosuggestion \$base03"
+          "set fish_pager_color_prefix \$base0B"
+          "set fish_pager_color_completion \$base05"
+          "set fish_pager_color_description \$base03"
+          "set fish_pager_color_progress \$base03"
+          "set fish_pager_color_selected_background --background=\$base02"
+          "set __fish_highlight_color \$base02"
+        ]}
+
+    fish_add_path --append /mnt/c/Users/joshj/scoop/apps/win32yank/current
+    set -U fish_greeting
       '';
       functions = {
         refresh = "source $HOME/.config/fish/config.fish";
@@ -192,10 +229,10 @@ in {
         ttake = "cd $(mktemp -d)";
         show_path = "echo $PATH | tr ' ' '\n'";
         posix-source = ''
-          for i in (cat $argv)
-            set arr (echo $i |tr = \n)
-            set -gx $arr[1] $arr[2]
-          end
+      for i in (cat $argv)
+        set arr (echo $i |tr = \n)
+        set -gx $arr[1] $arr[2]
+      end
         '';
       };
       shellAbbrs =
@@ -234,7 +271,7 @@ in {
 
         # To use code as the command, uncomment the line below. Be sure to replace [my-user] with your username.
         # If your code binary is located elsewhere, adjust the path as needed.
-        # code = "/mnt/c/Users/[my-user]/AppData/Local/Programs/'Microsoft VS Code'/bin/code";
+        code = "/mnt/c/Users/joshj/AppData/Local/Programs/'Microsoft VS Code'/bin/code";
       };
       plugins = [
         {

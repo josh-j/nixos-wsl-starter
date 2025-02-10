@@ -1,3 +1,6 @@
 *key
 .idea
 result
+*.swp
+.direnv
+/flake.lock
