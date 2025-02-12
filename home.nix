@@ -30,6 +30,7 @@ nix-index-database,
     vim
     wget
     zip
+    powershell
   ];
 
   stable-packages = with pkgs; [
@@ -108,20 +109,27 @@ in {
       enable = true;
       enableFishIntegration = true;
       settings = {
-        # Basic settings
-        aws.disabled = true;
-        gcloud.disabled = true;
-        kubernetes.disabled = false;
-        git_branch.style = "242";
-        directory.style = "blue";
-        directory.truncate_to_repo = false;
-        directory.truncation_length = 8;
-        python.disabled = true;
-        ruby.disabled = true;
-        hostname.ssh_only = false;
-        hostname.style = "bold green";
-
+        # # Basic settings
+        # aws.disabled = true;
+        # gcloud.disabled = true;
+        # kubernetes.disabled = false;
+        # git_branch.style = "242";
+        # directory.style = "blue";
+        # directory.truncate_to_repo = false;
+        # directory.truncation_length = 8;
+        # python.disabled = true;
+        # ruby.disabled = true;
+        # hostname.ssh_only = false;
+        # hostname.style = "bold green";
+        #
         # Character configuration with bright magenta
+
+        directory = {
+          style = "blue";
+          truncate_to_repo = false;
+          truncation_length = 8;
+          format = "[$path]($style)[$read_only]($read_only_style) ";
+        };
         character = {
           success_symbol = "[❯](bright-purple)";  # Using bright-purple for magenta
           error_symbol = "[❯](red)";
@@ -132,8 +140,8 @@ in {
         };
 
         # Format specification
-        format = "$all";
-        add_newline = false;
+        # format = "$all";
+        # add_newline = false;
       };
     };
 
@@ -187,6 +195,7 @@ in {
       enable = true;
       interactiveShellInit = ''
         ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+        set -gx LS_COLORS "di=38;2;128;0;128:$LS_COLORS"
         fish_add_path --append /mnt/c/Users/joshj/scoop/apps/win32yank/current
         set -U fish_greeting
       '';
