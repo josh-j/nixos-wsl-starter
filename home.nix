@@ -48,7 +48,7 @@ nix-index-database,
     # cpp
     ccls
     gcc
-    lldb
+    # lldb
 
     # local dev stuf
     mkcert
